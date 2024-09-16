@@ -83,6 +83,16 @@ app.post("/logout", (req, res) => {
     console.log("Logout successful")
 })
 
+app.get("/fetchProduct", async(req, res) => {
+    try{
+        const products = await Product.find({});
+        return res.status(200).json({message : "Fetch products successful", products});
+    }catch(err){
+        console.log("Fetch products error", err);
+        return res.status(400).json({err : "Fetch products error"});
+    }
+})
+
 app.post("/addProduct", async(req, res) => {
     try{
         const {productname, productDescription, productPrice, productStock} = req.body;

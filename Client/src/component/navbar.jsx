@@ -13,9 +13,7 @@ function Navbar() {
             const response = await axios.post(`${import.meta.env.VITE_API_URL}/logout`, {}, {
                 withCredentials : true
             })
-            dispatch(logout({
-                isLogin : response.data.isLogin
-            }))
+            dispatch(logout());
             console.log("Logout successful", response.data);
         }catch(err){
             console.log("Logout error", err);
