@@ -9,6 +9,8 @@ import AdminManagement from "./pages/adminManagement";
 import UserDashboard from "./pages/ีuserDashboard";
 import Login from "./pages/login";
 import Register from "./pages/register";
+import Cart from "./pages/cart";
+import ProductDetail from "./pages/productDetail";
 import "./styles/App.css";
 
 function App() {
@@ -27,10 +29,12 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/product/:productID" element={<ProductDetail/>}/>
         <Route path="/adminManagement" element={routeToAdmin()}/>
         <Route path="/userDashboard" element={isLogin? <UserDashboard/> : <Login/>}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/register" element={<Register/>}/>
+        <Route path="/login" element={!isLogin? <Login/> : <Home/>}/>
+        <Route path="/cart" element={isLogin? <Cart/> : <Home/>}/>
+        <Route path="/register" element={!isLogin? <Register/> : <Home/>}/>
       </Routes>
     </BrowserRouter>
   );

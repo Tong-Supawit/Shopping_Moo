@@ -29,6 +29,7 @@ function Navbar() {
                     {!isLogin && <Link to={"/login"}>LOGIN</Link>}
                     {!isLogin && <Link to={"/register"}>REGISTER</Link>}
                     {username.trim() !== "" && <Link to={"/userDashboard"}>{username.toUpperCase()}</Link>}
+                    {isLogin && <Link to={"/cart"}>CART</Link>}
                     {isLogin && <Link to={"/"} onClick={handleLogout}>LOGOUT</Link>}
                 </li>
             </ul>
